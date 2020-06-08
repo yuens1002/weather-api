@@ -1,0 +1,32 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type User {
+  userID: ID!
+  username: String!
+  email: String!
+  password: String!
+}
+
+type Query {
+  users: [User!]!
+  user(userID: ID!): User!
+}
+
+input SignUpInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+type Mutation {
+  signUp(signUpInput: SignUpInput): SignUpResponse!
+}
+
+type SignUpResponse {
+  ok: Boolean!
+  error: String
+  addedUser: User
+}
